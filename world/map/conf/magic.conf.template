@@ -1708,13 +1708,3 @@ TELEPORT-ANCHOR desert : "##02" = @("005-1.gat", 160, 64) @+ (5, 5);
 TELEPORT-ANCHOR forest : "##03" = @("015-1.gat", 35, 35) @+ (40, 40);
 TELEPORT-ANCHOR snakecave : "##04" = @("011-4.gat", 50, 75) @+ (3, 3);
 TELEPORT-ANCHOR dimondscove : "##05" = @("010-2.gat", 23, 79) @+ (3, 3);
-
-
-#--------------------------------------------------------------------------------
-# Illia spell
-#--------------------------------------------------------------------------------
-
-NONMAGIC SPELL illia0 : "#catalazuli" = REQUIRE ((rdistance(location(caster), location(npc("#Power Circle"))) == 0))
-                                                => EFFECT {
-                                                    callfunc "StartChannelling";
-                                                };
