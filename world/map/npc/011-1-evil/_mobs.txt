@@ -1,0 +1,38 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Woodland mobs
+
+011-1-evil.gat,0,0,0,0|monster|Evil Mushroom|1013,30,0,0,Mob011-1-evil::On1013
+011-1-evil.gat,0,0,0,0|monster|Pink Flower|1014,20,0,0,Mob011-1-evil::On1014
+011-1-evil.gat,0,0,0,0|monster|Mauve Herb|1029,3,270000,180000,Mob011-1-evil::On1029
+011-1-evil.gat,0,0,0,0|monster|Alizarin Herb|1032,1,2700000,1800000,Mob011-1-evil::On1032
+011-1-evil.gat,0,0,0,0|monster|Zombie|1036,6,0,10,Mob011-1-evil::On1036
+
+
+011-1-evil.gat,0,0,0|script|Mob011-1-evil|-1,{
+On1013:
+    set @mobID, 1013;
+    callfunc "MobPoints";
+    end;
+
+On1014:
+    set @mobID, 1014;
+    callfunc "MobPoints";
+    end;
+
+On1029:
+    set @mobID, 1029;
+    callfunc "MobPoints";
+    end;
+
+On1032:
+    set @mobID, 1032;
+    callfunc "MobPoints";
+    end;
+
+On1036:
+    set @mobID, 1036;
+    callfunc "MobPoints";
+    end;
+
+    end;
+}

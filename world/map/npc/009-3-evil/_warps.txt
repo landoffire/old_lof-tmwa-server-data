@@ -1,0 +1,5 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Hurnscald Cave warps
+
+009-3-evil.gat,173,20|warp|To Cellar|-1,-1,009-2-evil.gat,147,89
+009-3-evil.gat,20,57|warp|To Lake Cave|-1,-1,011-4-evil.gat,129,87

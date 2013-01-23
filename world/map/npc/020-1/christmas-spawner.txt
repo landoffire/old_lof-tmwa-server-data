@@ -1,0 +1,11 @@
+020-1.gat,101,82,0|script|Spawner Guy|168,{
+mes "[Spawner Guy]";
+mes "\"Heya, seems like you need to collect some things for Santa.\"";
+mes "\"Seems to be great timing considering I found a perfume that attracts Christmas slimes!\"";
+next;
+mes "\"I will spray this in the air, and bring some more slimes to your aid in finding what you need, have a great day!\"";
+monster "020-1.gat", 1, 1, "Santa Slime, 1015, 50;
+monster "020-1.gat", 1, 1, "Rudolph Slime, 1016, 50;
+mes "\"And Merry Christmas!\"";
+close;
+}

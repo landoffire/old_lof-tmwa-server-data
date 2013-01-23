@@ -1,0 +1,5 @@
+// Map AN21-1: unnamed map AN21-1
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+map: AN21-1.gat
+npc: npc/AN21-1/_mobs.txt
+npc: npc/AN21-1/_warps.txt

@@ -1,0 +1,5 @@
+// Map 011-6-evil: Bandit Cave
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+map: 011-6-evil.gat
+npc: npc/011-6-evil/_mobs.txt
+npc: npc/011-6-evil/_warps.txt

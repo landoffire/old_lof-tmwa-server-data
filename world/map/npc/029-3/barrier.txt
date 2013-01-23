@@ -1,0 +1,8 @@
+029-3.gat,45,20,0|script|#FightCaveBarrier|45,1,1,{
+    if ($@FIGHT_CAVE_STATUS == 1) goto L_Block;
+    warp "029-1.gat", 54, 39;
+    end;
+
+    L_Block:
+    message strcharinfo(0), "Some force seems to be blocking you from exiting.";
+}

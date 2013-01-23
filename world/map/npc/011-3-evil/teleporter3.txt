@@ -1,0 +1,16 @@
+//
+
+011-3-evil.gat,30,22,0|script|Mikra|116,{
+    mes "[Mundane Transporter]";
+    mes "\"Want out of this cave?\"";
+    menu
+         "Please.", L_Sure,
+         "Nope", L_Close;
+
+L_Sure:
+    warp "011-1-evil.gat", 62, 93;
+    close;
+    
+L_Close:
+    close;
+}

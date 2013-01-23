@@ -1,0 +1,6 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Woodland warps
+
+011-1-evil.gat,58,92|warp|To Hermit's Cave|-1,-1,011-3-evil.gat,0,0
+011-1-evil.gat,124,62|warp|To Hurnscald Outskirts|-1,2,008-1-evil.gat,25,61
+011-1-evil.gat,38,36|warp|To Bandit Cave|-1,-1,011-6-evil.gat,49,100

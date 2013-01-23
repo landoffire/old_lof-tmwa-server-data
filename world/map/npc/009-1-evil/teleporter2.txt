@@ -1,0 +1,16 @@
+//
+
+009-1-evil.gat,53,47,0|script|Teleporter|116,{
+    mes "[Mundane Transporter]";
+    mes "\"Ready to leave the Dark World?\"";
+    menu
+         "Yeah...", L_Sure,
+         "Never!", L_Close;
+
+L_Sure:
+    warp "009-1.gat", 52, 47;
+    close;
+    
+L_Close:
+    close;
+}

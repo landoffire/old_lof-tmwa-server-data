@@ -1,0 +1,113 @@
+//
+
+020-1.gat,81,89,0|script|Santa Claus|105,{
+	if(XMAS2012_Quest == 2) goto L_thanks;
+	if(XMAS2012_Quest == 1) goto L_doyou;
+   
+    mes "[Saint Nicholas]";
+    mes "\"I seem to have lost my means of travel...\"";
+	next;
+	mes "\"I use candy canes to go from house to house, and I think some slimes stole them from me...\"";
+	next;
+	mes "\"If only I could find someone to get them back for me!\"";
+    goto L_Santamenu;
+
+L_Santamenu:
+    menu
+        "I can get them for you!", L_get1,
+        "I hope you can find someone too!", L_Close,
+		"I guess you have a problem then...", -;
+    goto L_Close;
+
+L_get1:
+    mes "[Saint Nicholas]";
+    mes "\"Are you sure...? Do you realize how dangerous Rudolf Slimes can be?\"";
+    menu
+        "Yes, and I am a danger to them!", L_get2,
+        "Actually, yes...I guess I won't waste my time.", -;
+    goto L_Close;
+
+L_get2:
+    mes "[Saint Nicholas]";
+    mes "\"Thank you so much! Please be back soon with 100 Candy Canes so the children can all have a Merry Christmas!\"";
+	next;
+	mes "\"If you can do this, you can pick your Christmas gift.\"";
+	set XMAS2012_Quest,1;
+    goto L_Close;
+
+L_doyou:
+	mes "[Saint Nicholas]";
+	mes "\"Do you have the 100 Candy Canes I need to continue giving gifts around the world?\"";
+	menu
+		"Yes, I have all 100 right here!", L_ifhas,
+		"No I will look for some more, sorry.", -;
+	goto L_Close;
+
+L_ifhas:
+	if (countitem("Candycane") < 100) goto L_Missing;
+	getinventorylist;
+    if (@inventorylist_count == 100 && countitem("Candycane") > 100) goto L_Full;
+	delitem "Candycane", 100;
+	mes "[Saint Nicholas]";
+	mes"\"Thank you so much! Now what would you like for Christmas?\"";
+	menu
+		"Hmm, think I can get a beard like yours?", L_beardhat,
+		"Do you have any of your elf's hats?", L_elf,
+		"I want to look like a Reindeer!", L_antler,
+		"A tree for my head sounds nice..", L_tree,
+		"My ears are cold, I think I want some earmuffs", L_muffs;
+
+L_beardhat:
+    getitem "Santabeardhat", 1;
+    mes "[Saint Nicholas]";
+    mes "\"There you go! HO HO HO, have a Merry Christmas!\"";
+	set XMAS2012_Quest,2;
+    goto L_Close;
+
+L_elf:
+    getitem "Christmaselfhat", 1;
+    mes "[Saint Nicholas]";
+    mes "\"There you go! HO HO HO, have a Merry Christmas!\"";
+	set XMAS2012_Quest,2;
+    goto L_Close;
+	
+L_antler:
+    getitem "Antlerhat", 1;
+    mes "[Saint Nicholas]";
+    mes "\"There you go! HO HO HO, have a Merry Christmas!\"";
+	set XMAS2012_Quest,2;
+    goto L_Close;
+	
+L_tree:
+	getitem "Christmastreehat", 1;
+    mes "[Saint Nicholas]";
+    mes "\"There you go! HO HO HO, have a Merry Christmas!\"";
+	set XMAS2012_Quest,2;
+    goto L_Close;
+
+L_muffs:
+    getitem "Earmuffs", 1;
+    mes "[Saint Nicholas]";
+    mes "\"There you go! HO HO HO, have a Merry Christmas!\"";
+	set XMAS2012_Quest,2;
+    goto L_Close;
+	
+L_Full:
+    mes "[Saint Nicholas]";
+    mes "\"You're inventory is pretty full...  Come back after you've made some room!\"";
+    goto L_Close;
+
+L_Missing:
+    mes "[Saint Nicholas]";
+    mes "\"It looks like you're missing some..  Please come back when you have what i need!\"";
+    goto L_Close;
+	
+L_thanks:
+	mes "[Saint Nicholas]";
+	mes "\"Thank you so much, I will depart soon to finish my gift deliveries!\"";
+	mes "\"Merry Christmas!\"";
+	goto L_Close;
+
+L_Close:
+    close;
+}

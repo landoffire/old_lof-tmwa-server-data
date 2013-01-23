@@ -1,0 +1,22 @@
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+// Lake Cave mobs
+
+011-4-evil.gat,52,30,39,39|monster|Lava Slime|1096,1,100000,30000,Mob011-4-evil::On1096
+011-4-evil.gat,93,114,39,39|monster|Black Slime|1100,1,100000,30000,Mob011-4-evil::On1100
+011-4-evil.gat,0,0,0,0|monster|Black Slime|1100,40,0,0,Mob011-4-evil::On1100
+011-4-evil.gat,0,0,0,0|monster|Spiky Mushroom|1096,30,0,0,Mob011-4-evil::On1096
+
+
+011-4-evil.gat,0,0,0|script|Mob011-4-evil|-1,{
+On1096:
+    set @mobID, 1096;
+    callfunc "MobPoints";
+    end;
+
+On1100:
+    set @mobID, 1100;
+    callfunc "MobPoints";
+    end;
+
+    end;
+}

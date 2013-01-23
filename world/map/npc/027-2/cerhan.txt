@@ -1,0 +1,68 @@
+// Author: Jenalya
+
+027-2.gat,70,77,0|script|Cerhan|311,{
+    mes "[Cerhan]";
+    mes "\"Ah, hello! It is good to see another normal human at this strange place!\"";
+    next;
+    menu
+        "That's true. What are you doing here?",L_Story,
+        "Yes, this place is really strange. I'm going to have another look around.",-;
+    goto L_Close;
+
+L_Story:
+    mes "[Cerhan]";
+    mes "\"I came from Thermin, a town in Kazei area.\"";
+    next;
+    mes "\"I'm an experienced weapon master and thinking about establishing a smithy here. But I'll need some more equipment.\"";
+    next;
+    if (countitem("MylarinDust") > 0)
+        menu
+            "Do you know something about 'Mylarin Dust'?", L_Mylarin,
+            "Good luck with that.",-;
+    if (countitem("Warlordplate") >0)
+        menu
+            "Can you make this better for me?", L_golden,
+            "What are you looking at?",-;
+
+    mes "[Cerhan]";
+    mes "\"If you are interested in weapons and armor, you may want to come back later.\"";
+    goto L_Close;
+
+L_Mylarin:
+    mes "[Cerhan]";
+    mes "\"Mylarin dust?! Where did you get that? That's amazing!\"";
+    next;
+    mes "\"I can craft you an amazing strong armor with that - uhm, well, I first need to set up my smithy here.\"";
+    next;
+    mes "\"Please come back, when I'm ready with that. Mylarin dust... amazing.\"";
+    goto L_Close;
+
+L_golden:
+    mes "[Cerhan]";
+    mes "\"I can plate that armor in gold if you so wish, I will need 20 gold ore and 100,000gp.\"";
+    if (countitem("gold") < 20) goto L_Missing;
+    if (countitem("Warlordplate") < 1) goto L_Missing;
+    if (Zeny < 100000) goto L_NotEnoughMoney;
+    getinventorylist;
+    if (@inventorylist_count == 100 && countitem("gold") > 20) goto L_Full;
+    delitem "gold", 20;
+    delitem "Warlordplate", 1;
+    set Zeny, Zeny - 100000;
+    getitem "Goldenwarlordplate", 1;
+    mes "[Cerhan]";
+    mes "\"There you go!\"";
+    goto L_Close;
+
+L_Missing:
+    mes "[Cerhan]";
+    mes "\"It looks like you're missing some items.  Please come back when you have what i need!\"";
+    goto L_Close;
+
+L_NotEnoughMoney:
+    mes "[Cerhan]";
+    mes "\"You don't have enough money, come back later!\"";
+    goto L_Close;
+
+L_Close:
+    close;
+}

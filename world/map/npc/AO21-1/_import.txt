@@ -1,0 +1,5 @@
+// Map AO21-1: unnamed map AO21-1
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+map: AO21-1.gat
+npc: npc/AO21-1/_mobs.txt
+npc: npc/AO21-1/_warps.txt

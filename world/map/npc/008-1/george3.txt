@@ -1,0 +1,120 @@
+//George
+008-1.gat,136,36,0|script|George|138,{
+       
+    if(GEORGE_Quest >= 4) goto L_Done2;
+    if(GEORGE_Quest == 3) goto L_Progress2;
+    if(GEORGE_Quest == 2) goto L_Done1;
+    if(GEORGE_Quest == 1) goto L_Progress;
+    set @TEMP, rand(2);
+    if(@TEMP == 1) goto L_Open1;
+       
+L_Open0:
+    mes "[George]";
+    mes "\"I need some help, could you please do something for me?\"";
+    next;
+    goto L_Ask;
+              
+L_Open1:
+    mes "[George]";
+    mes "\"Oh hey there, wanna help me?\"";
+    next;
+       
+L_Ask:
+    menu
+        "Yes, I will help you.", L_Yes,
+        "No, I don't have time, sorry.", L_Close;
+       
+L_Yes:
+    set @TEMP, rand(2); 
+    if(@TEMP == 1) goto L_Req1;
+       
+L_Req0:
+    mes "[George]";
+    mes "\"Great!  I need 30 beers, 50 bottles of water and 30 Casino coins.\"";
+    next;
+    goto L_Set;
+             
+L_Req1:
+    mes "[George]";
+    mes "\"Bring me 30 beers, 50 bottles of water and 30 Casino coins, and I'll give you something.\"";
+    next;
+    goto L_Set;
+       
+L_Set:
+    mes "[George]";
+    set GEORGE_Quest, 1;
+    mes "\"We are going to sea soon, so please hurry!\"";
+    goto L_Close;
+       
+L_Progress:
+    if (countitem("Beer") < 30) goto L_NotEnough;
+    if (countitem("Bottleofwater") < 50) goto L_NotEnough;
+    if (countitem("Casinocoins") < 30) goto L_NotEnough;
+    mes "[George]";
+    mes "\"Oooh, You have them all, here is your reward! You are a trustworthy adventurer.";
+    getinventorylist;
+    if (@inventorylist_count - (countitem("Beer") == 30) > 99 - (countitem("Sailorhat") == 0) - (countitem("Bottleofwater") == 50) > 99 - (countitem("Casinocoins") == 30) > 99 ) goto L_TooMany;
+    delitem "Beer", 30;
+    delitem "Bottleofwater", 50;
+    delitem "Casinocoins", 30;
+    getexp 5000, 0;
+    getitem "Sailorhat", 1;
+    set GEORGE_Quest, 2;
+    goto L_Close;
+              
+L_Progress2:
+    if (countitem("Zombienachos") < 50) goto L_NotEnough1;
+    if (countitem("Ladyfingers") < 50) goto L_NotEnough1;
+    if (countitem("ScrollOfPaper") < 1) goto L_NotEnough1;
+    mes "[George]";
+    mes "\"Nice!  They're perfect, just perfect!";
+    mes "You brought everything my captain asked,even the Maritaime Almanac Scroll! Your effort deserves a special reward, take this.\"";
+    getinventorylist;
+    if ((@inventorylist_count - (countitem("Zombienachos") == 50) > 99  - (countitem("Captainshat") == 0) - (countitem("Ladyfingers") == 50) > 99 - (countitem("Scrollofpaper") == 1) > 99 )) goto L_TooMany;
+    delitem "Zombienachos", 50;
+    delitem "Ladyfingers", 50;
+    delitem "Scrollofpaper", 1;
+    getexp 15000, 0;
+    getitem "Captainshat", 1;
+    set GEORGE_Quest, 4;
+    goto L_Close;
+              
+L_NotEnough:
+    mes "[George]";
+    mes "\"Oh, please hurry and bring me what I asked,  We're leaving soon!\"";
+    mes "\"Remember the items we need is 30 Beers, 50 Bottles of water, and 30 casino coins...Thanks.\"";
+    goto L_Close;
+       
+L_NotEnough1:
+    mes "[George]";
+    mes "\"Please do hurry and bring me what I asked, so we can shove off!\"";
+    mes "\"Remember that was 50 Zombie Nachos, 50 Lady Fingers, and something to read about the sea...you know maritime stuff.\"";
+    goto L_Close;
+      
+L_Done1:
+    mes "[George]";
+    mes "\"Thank you, Mate!\"";
+    mes "\"But...  My Captain asked you to get him some things.\"";
+    next;
+    mes "\"Zombie Nachos and Lady Fingers are some of his favorite foods while in port, please get him 50 of each.\"";
+    mes "\"He really enjoys reading about the sea, so see if you could find him something. I am sure the reward will be good, if you do.\"";
+    set GEORGE_Quest,3;
+    goto L_Close;
+           
+L_Done2:
+    mes "[George]";
+    mes "\"My Captain and I Thank You!\"";
+    mes "\"Because of your efforts, we can now go to sea. You will now be able to get a low fare passage to the island of Candor!\"";
+    goto L_Close;
+       
+L_Close:
+    set @TEMP, 0;
+    close;
+    
+L_TooMany:
+    next;
+    mes "[George]";
+    mes "\"Your backpack is full.  I'll wait until you have some room.\"";
+    goto L_Close;
+
+}

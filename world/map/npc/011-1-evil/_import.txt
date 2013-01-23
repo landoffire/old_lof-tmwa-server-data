@@ -1,0 +1,5 @@
+// Map 011-1-evil: Woodland
+// This file is generated automatically. All manually changes will be removed when running the Converter.
+map: 011-1-evil.gat
+npc: npc/011-1-evil/_mobs.txt
+npc: npc/011-1-evil/_warps.txt
