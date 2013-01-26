@@ -47,7 +47,7 @@ broadcast: 40
 local_broadcast: 40
 
 // Instantly kills the invoker, regardless of current health.
-die: 40
+die: 20
 
 // Locate someone on a map, returns your coordinates if the person isn't on.
 where: 40
@@ -56,7 +56,7 @@ where: 40
 go: 40
 
 // Warp yourself to a person.
-goto: 40
+goto: 20
 
 // Cause the invoker to follow a specified character, including warps. (Disabled)
 follow: 40
@@ -90,7 +90,7 @@ heal: 40
 hide: 40
 
 // Enables you to to jump randomly on a map (where you already are).
-jump: 40
+jump: 20
 
 // Warp the invoker to his last save point.
 return: 40
@@ -515,4 +515,4 @@ reloadscript: 99
 reloadgmdb: 99
 
 // Brings up your personal storage wherever you are.
-storage: 99
+storage: 40
