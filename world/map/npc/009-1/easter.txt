@@ -30,11 +30,11 @@ L_tell:
 L_what:
     set @Q_easter2013, 1;
     mes "[The Easter Bunny]";
-    mes "\"I can trade a set of Rabbit Ears for 4 Red Easter Eggs and 4 Pink Easter Eggs,\"";
+    mes "\"I can trade a set of Rabbit Ears for 6 Red Easter Eggs and 6 Pink Easter Eggs,\"";
     next;
-    mes "\"Or I can trade an Egg Shell Hat for 4 Yellow Easter Eggs and 4 Teal Easter Eggs,\"";
+    mes "\"Or I can trade an Egg Shell Hat for 6 Yellow Easter Eggs and 6 Teal Easter Eggs,\"";
     next;
-    mes "\"And I can trade a Shroom Hat for 4 Green Easter Eggs and 4 Blue Easter Eggs.\"";
+    mes "\"And I can trade a Shroom Hat for 6 Green Easter Eggs and 6 Blue Easter Eggs.\"";
     next;
     mes "\"And if you can collect enough, I will make up to 3 trades with you. Good luck and go find some eggs!\"";
     close;
@@ -43,18 +43,18 @@ L_what2:
     mes "[The Easter Bunny]";
     mes "\"Did you get some eggs for me?\"";
     menu
-        "Yeah, I would like to make that trade of 4 Red Easter Eggs and 4 Pink Easter Eggs for the Rabbit Ears.", L_ears,
-        "Yes, I would like to trade 4 Yellow Easter Eggs and 4 Teal Easter Eggs for the Egg Shell Hat.", L_eggshell,
-        "Yeah, I have 4 Green Easter Eggs and 4 Blue Easter Eggs for the Shroom Hat.", L_shroom,
+        "Yeah, I would like to make that trade of 6 Red Easter Eggs and 6 Pink Easter Eggs for the Rabbit Ears.", L_ears,
+        "Yes, I would like to trade 6 Yellow Easter Eggs and 6 Teal Easter Eggs for the Egg Shell Hat.", L_eggshell,
+        "Yeah, I have 6 Green Easter Eggs and 6 Blue Easter Eggs for the Shroom Hat.", L_shroom,
         "No, not yet.", -;
     goto L_Close;
 
 L_ears:
-    if (countitem("Redeasteregg") < 4) goto L_Missing;
-    if (countitem("Pinkeasteregg") < 4) goto L_Missing;
+    if (countitem("Redeasteregg") < 6) goto L_Missing;
+    if (countitem("Pinkeasteregg") < 6) goto L_Missing;
     getinventorylist;
-    delitem "Redeasteregg", 4;
-    delitem "Pinkeasteregg", 4;
+    delitem "Redeasteregg", 6;
+    delitem "Pinkeasteregg", 6;
     getitem "Whiterabbitears", 1;
     if (@Q_easter2013 == 3) set @Q_easter2013, 4;
     if (@Q_easter2013 == 2) set @Q_easter2013, 3;
@@ -66,11 +66,11 @@ L_ears:
     goto L_Close;
 
 L_eggshell:
-if (countitem("Yelloweasteregg") < 4) goto L_Missing;
-    if (countitem("Tealeasteregg") < 4) goto L_Missing;
+if (countitem("Yelloweasteregg") < 6) goto L_Missing;
+    if (countitem("Tealeasteregg") < 6) goto L_Missing;
     getinventorylist;
-    delitem "Yelloweasteregg", 4;
-    delitem "Tealeasteregg", 4;
+    delitem "Yelloweasteregg", 6;
+    delitem "Tealeasteregg", 6;
     getitem "Eggshellhat", 1;
     if (@Q_easter2013 == 3) set @Q_easter2013, 4;
     if (@Q_easter2013 == 2) set @Q_easter2013, 3;
@@ -82,11 +82,11 @@ if (countitem("Yelloweasteregg") < 4) goto L_Missing;
     goto L_Close;
 
 L_shroom:
-if (countitem("Greeneasteregg") < 4) goto L_Missing;
-    if (countitem("Blueeasteregg") < 4) goto L_Missing;
+if (countitem("Greeneasteregg") < 6) goto L_Missing;
+    if (countitem("Blueeasteregg") < 6) goto L_Missing;
     getinventorylist;
-    delitem "Greeneasteregg", 4;
-    delitem "Blueeasteregg", 4;
+    delitem "Greeneasteregg", 6;
+    delitem "Blueeasteregg", 6;
     getitem "Shroomhat", 1;
     if (@Q_easter2013 == 3) set @Q_easter2013, 4;
     if (@Q_easter2013 == 2) set @Q_easter2013, 3;
