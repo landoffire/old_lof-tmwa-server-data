@@ -1,0 +1,114 @@
+//Easter 2013 Quest by Pihro for Land of Fire
+
+009-1.gat,45,34,0|script|Easter Bunny|173,{
+
+    if (@Q_easter2013 == 4) goto L_done;
+    if (@Q_easter2013 >= 1) goto L_what2;
+   
+    mes "[The Easter Bunny]";
+    mes "\"Hello! I need help! All of my eggs were stolen and I need them returned - (breathes in fast) - so that I can hide eggs for all of the people on Easter!\"";
+    next;
+    goto L_menu1;
+
+L_menu1:
+    mes "[The Easter Bunny]";
+    mes "\"Do you think you can help me?\"";
+    menu
+        "What do I get out of it?", L_tell,
+        "No thanks, I don't have time for this....", L_Close;
+    goto L_Close;
+
+L_tell:
+    mes "[The Easter Bunny]";
+    mes "\"I have some props that were used in an Easter play a while back that I have no use for....\"";
+    mes "\"I suppose I can trade those for eggs that you can find for me.\"";
+    menu
+        "So what are the props?", L_what,
+        "I'm not interested.", -;
+    close;
+
+L_what:
+    set @Q_easter2013, 1;
+    mes "[The Easter Bunny]";
+    mes "\"I can trade a set of Rabbit Ears for 4 Red Easter Eggs and 4 Pink Easter Eggs,\"";
+    next;
+    mes "\"Or I can trade an Egg Shell Hat for 4 Yellow Easter Eggs and 4 Teal Easter Eggs,\"";
+    next;
+    mes "\"And I can trade a Shroom Hat for 4 Green Easter Eggs and 4 Blue Easter Eggs.\"";
+    next;
+    mes "\"And if you can collect enough, I will make up to 3 trades with you. Good luck and go find some eggs!\"";
+    close;
+
+L_what2:
+    mes "[The Easter Bunny]";
+    mes "\"Did you get some eggs for me?\"";
+    menu
+        "Yeah, I would like to make that trade of 4 Red Easter Eggs and 4 Pink Easter Eggs for the Rabbit Ears.", L_ears,
+        "Yes, I would like to trade 4 Yellow Easter Eggs and 4 Teal Easter Eggs for the Egg Shell Hat.", L_eggshell,
+        "Yeah, I have 4 Green Easter Eggs and 4 Blue Easter Eggs for the Shroom Hat.", L_shroom,
+        "No, not yet.", -;
+    goto L_Close;
+
+L_ears:
+    if (countitem("Redeasteregg") < 4) goto L_Missing;
+    if (countitem("Pinkeasteregg") < 4) goto L_Missing;
+    getinventorylist;
+    delitem "Redeasteregg", 4;
+    delitem "Pinkeasteregg", 4;
+    getitem "Whiterabbitears", 1;
+    if (@Q_easter2013 == 3) set @Q_easter2013, 4;
+    if (@Q_easter2013 == 2) set @Q_easter2013, 3;
+    if (@Q_easter2013 == 1) set @Q_easter2013, 2;
+    mes "[The Easter Bunny]";
+    mes "\"There you go!\"";
+    menu
+        "Thanks!", L_done;
+    goto L_Close;
+
+L_eggshell:
+if (countitem("Yelloweasteregg") < 4) goto L_Missing;
+    if (countitem("Tealeasteregg") < 4) goto L_Missing;
+    getinventorylist;
+    delitem "Yelloweasteregg", 4;
+    delitem "Tealeasteregg", 4;
+    getitem "Eggshellhat", 1;
+    if (@Q_easter2013 == 3) set @Q_easter2013, 4;
+    if (@Q_easter2013 == 2) set @Q_easter2013, 3;
+    if (@Q_easter2013 == 1) set @Q_easter2013, 2;
+    mes "[The Easter Bunny]";
+    mes "\"There you go!\"";
+    menu
+        "Thanks!", L_done;
+    goto L_Close;
+
+L_shroom:
+if (countitem("Greeneasteregg") < 4) goto L_Missing;
+    if (countitem("Blueeasteregg") < 4) goto L_Missing;
+    getinventorylist;
+    delitem "Greeneasteregg", 4;
+    delitem "Blueeasteregg", 4;
+    getitem "Shroomhat", 1;
+    if (@Q_easter2013 == 3) set @Q_easter2013, 4;
+    if (@Q_easter2013 == 2) set @Q_easter2013, 3;
+    if (@Q_easter2013 == 1) set @Q_easter2013, 2;
+    mes "[The Easter Bunny]";
+    mes "\"There you go!\"";
+    menu
+        "Thanks!", L_done;
+    goto L_Close;
+
+L_Missing:
+    mes "[The Easter Bunny]";
+    mes "\"You are missing some eggs, come back when you have enough.\"";
+    close;
+
+L_done:
+    mes "[The Easter Bunny]";
+    mes "\"Thanks for all of your help, Happy Easter!\"";
+    close;
+
+L_Close:
+    mes "[The Easter Bunny]";
+    mes "\"Bye! Happy Easter!\"";
+    close;
+}

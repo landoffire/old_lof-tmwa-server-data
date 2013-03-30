@@ -1,7 +1,6 @@
 // Map 009-1: Hurnscald
 // This file is generated automatically. All manually changes will be removed when running the Converter.
 map: 009-1.gat
-npc: npc/009-1/_import.txt.old
 npc: npc/009-1/_mobs.txt
 npc: npc/009-1/_warps.txt
 npc: npc/009-1/jack.txt
@@ -15,3 +14,4 @@ npc: npc/009-1/snippy.txt
 npc: npc/009-1/soul-menhir.txt
 npc: npc/009-1/teleporter.txt
 npc: npc/009-1/water_pump.txt
+npc: npc/009-1/easter.txt
