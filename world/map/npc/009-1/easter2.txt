@@ -1,0 +1,35 @@
+020-1.gat,84,67,0|script|Evil Easter Bunny|173,{
+    mes "[The Easter Bunny Look Alike]";
+    mes "\"Muahaha! I have stolen all of that good 'ol bunny two shoes' eggs!\"";
+    next;
+    mes "[The Easter Bunny Look Alike]";
+    mes "\"I have given them to the Easter Fluffies, here, I will share my wealth of eggs if you want. Beware, some don't want to share!\"";
+    gmcommand "@killmonster2 ";
+    gmcommand "@spawn easterfluffy 20 ";
+    gmcommand "@spawn hungryfluffy 20 ";
+    close;
+}
+
+009-1.gat,28,48,0|script|Evil Easter Bunny|173,{
+    mes "[The Easter Bunny Look Alike]";
+    mes "\"Muahaha! I have stolen all of that good 'ol bunny two shoes' eggs!\"";
+    next;
+    mes "[The Easter Bunny Look Alike]";
+    mes "\"I have given them to the Easter Fluffies, here, I will share my wealth of eggs if you want. Beware, some don't want to share!\"";
+    gmcommand "@killmonster2 ";
+    gmcommand "@spawn easterfluffy 20 ";
+    gmcommand "@spawn hungryfluffy 20 ";
+    close;
+}
+
+001-1.gat,27,74,0|script|Evil Easter Bunny|173,{
+    mes "[The Easter Bunny Look Alike]";
+    mes "\"Muahaha! I have stolen all of that good 'ol bunny two shoes' eggs!\"";
+    next;
+    mes "[The Easter Bunny Look Alike]";
+    mes "\"I have given them to the Easter Fluffies, here, I will share my wealth of eggs if you want. Beware, some don't want to share!\"";
+    gmcommand "@killmonster2 ";
+    gmcommand "@spawn easterfluffy 20 ";
+    gmcommand "@spawn hungryfluffy 20 ";
+    close;
+}
