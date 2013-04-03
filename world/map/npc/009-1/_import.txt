@@ -14,5 +14,3 @@ npc: npc/009-1/snippy.txt
 npc: npc/009-1/soul-menhir.txt
 npc: npc/009-1/teleporter.txt
 npc: npc/009-1/water_pump.txt
-npc: npc/009-1/easter.txt
-npc: npc/009-1/easter2.txt
