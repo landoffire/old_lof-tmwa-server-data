@@ -23,6 +23,8 @@ L_English:
     mes "4. No begging";
     mes "5. Speak English on public chat";
     mes "6. Treat others the same way you would like to be treated";
+    mes "7. Do not use any curse words. These are considered offensive to many, as well as children who play.";
+    mes "8. Keep it on an appropriate age level in general chat. Kids play too.";
     next;
     mes "AFK botting will be determined by talking to players who are moving and/or attacking.";
     mes "Automated following will be determined by observation.";
