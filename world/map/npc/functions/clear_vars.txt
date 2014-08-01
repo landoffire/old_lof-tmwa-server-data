@@ -1,8 +1,34 @@
 // Clears old variables
 
-function|script|ClearVariables|{
+function|script|ClearVariables|,
+{
+    // Tutorial 
+    if (sorfina)
+        goto L_SetAllTut;
+    goto L_Easter;
+
+L_SetAllTut:
+    if (FLAGS & FLAG_TUTORIAL_DONE)
+        goto L_ResetAllTut;
+    if ((FLAGS & FLAG_TUTORIAL_DONE) && (!(TUTORIAL & $@HasanCompleteBit)))
+        set TUTORIAL, TUTORIAL | $@HasanCompleteBit;
+    set @tutorial_tmp, (sorfina + tanisha + hasan + kaan);
+    set TUTORIAL, (TUTORIAL & ~(NIBBLE_0_MASK) | (@tutorial_tmp << NIBBLE_0_SHIFT));
+    set @tutorial_tmp, 0;
+    goto L_ResetAllTut;
+
+L_ResetAllTut:
+    set sorfina, 0;
+    set tanisha, 0;
+    set hasan, 0;
+    set kaan, 0;
+    goto L_Easter;
+
+L_Easter:
+    // Easter
+    set EasterQuest, 0;
+
     // Halloween 2006
-    set HW_Bcat, 0;
     set HWQUEST1, 0;
     set HWQUEST2, 0;
     set HWQUEST3, 0;
@@ -24,26 +50,6 @@ function|script|ClearVariables|{
     set HWQUEST18, 0;
     set HWQUEST19, 0;
     set HWQUEST20, 0;
-    set HWQUEST21, 0;
-    set HWQUEST22, 0;
-    set HWQUEST23, 0;
-    set HWQUEST24, 0;
-    set HWQUEST25, 0;
-    set HWQUEST26, 0;
-    set HWQUEST27, 0;
-    set HWQUEST28, 0;
-    set HWQUEST29, 0;
-    set HWQUEST30, 0;
-    set HWQUEST31, 0;
-    set HWQUEST32, 0;
-    set HWQUEST33, 0;
-    set HWQUEST34, 0;
-    set HWQUEST35, 0;
-    set HWQUEST36, 0;
-    set HWQUEST37, 0;
-    set HWQUEST38, 0;
-    set HWQUEST39, 0;
-    set HWQUEST40, 0;
 
     // Christmas 2006
     set XMASQUEST1, 0;
@@ -66,6 +72,8 @@ function|script|ClearVariables|{
     set XMASQUEST18, 0;
     set XMASQUEST19, 0;
     set XMASQUEST20, 0;
+
+    set QUEST_Halloween07_state, 0;
 
     set QUEST_xmas07_state, 0;
     set QUEST_xmas07_milk, 0;
@@ -115,6 +123,47 @@ function|script|ClearVariables|{
     set Xmas2010, 0;
     set Golbenez_Inn_Cost, 0;
 
+    set QUEST_Easter11, 0;
+
+    // contains bad karma information
+    // set hw2011, 0;
+
+    set xmas11, 0;
+
+    set QUEST_Easter12, 0;
+
+    set xmas2012, 0;
+
+    set QUEST_clothdyer_angus, 0;
+
+    // Tulimshar and Mine Variables which aren't used anymore
+    set Scorp, 0;
+    set Bugleg, 0;
+    // variable isn't used
+    set QUEST_clothdyer_state, 0;
+    // variable was moved to a temporary player variable
+    set KatzeBeenOutside, 0;
+    // variable was moved to Nibble 1 of the variable Katze
+    set LastHiss, 0;
+    // quest was turned into a Daily Quest, so the variable isn't needed anymore
+    set CaveSnakeLamp, 0;
+
+    // move Scythe quest into bitmasked variable QUEST_Hurnscald
+    if (QUEST_Scythe_state)
+        set QUEST_Hurnscald, (QUEST_Hurnscald & ~(NIBBLE_1_MASK)) | (QUEST_Scythe_state << NIBBLE_1_SHIFT);
+    set QUEST_Scythe_state, 0;
+
+    // move Demon Mask quest into bitmasked variable QUEST_Hurnscald
+    if (QUEST_demon_mines)
+        set QUEST_Hurnscald, (QUEST_Hurnscald & ~(NIBBLE_2_MASK)) | (QUEST_demon_mines << NIBBLE_2_SHIFT);
+    set QUEST_demon_mines, 0;
+
+    // move Inspector quest into bitmasked variable QUEST_Hurnscald
+    set @inspector, ((QUEST_Hurnscald & NIBBLE_3_MASK) >> NIBBLE_3_SHIFT);
+    if (Inspector > @inspector)
+        set QUEST_Hurnscald, (QUEST_Hurnscald & ~(NIBBLE_3_MASK)) | (Inspector << NIBBLE_3_SHIFT);
+    set Inspector, 0;
+    set @inspector, 0;
 
     //These lines are needed to migrate stuff from variables to flags
     if (Open_Underground_Palace_Barrier)
@@ -133,12 +182,16 @@ function|script|ClearVariables|{
         set FLAGS, FLAGS | FLAG_SANTAS_HELPER;
     set ChristmasQuest2, 0;
 
+    if (ChestQuest)
+        set FLAGS, FLAGS | FLAG_HURNSMINE_CHEST;
+    set ChestQuest, 0;
+
     if (#BankAccount < 0)
-        goto FixBank;
+        goto L_FixBank;
 
     return;
 
-FixBank:
+L_FixBank:
     if (Zeny >= -#BankAccount)
         goto L_Fix_Full;
 
@@ -151,9 +204,134 @@ L_Fix_Full:
     set Zeny, Zeny + #BankAccount;
     set #BankAccount, 0;
     return;
-//Tulimshar and Mine Variables
-    set Scorp, 0;
-    set Bugleg, 0;
-    set ChestQuest, 0;
+}
 
+// The variable TMW_Quest was used to save the progress in several subquests linearly.
+// The subquests are moved to different nibbles of other variables
+// to make it possible to do some of the quests in parallel.
+function|script|ClearVarTMW_Quest|,
+{
+    if (TMW_Quest == 0) goto L_Done;
+    if (TMW_Quest <= 6)  goto L_Bernard_Mikhail;
+    if (TMW_Quest <= 8)  goto L_Sarah;
+    if (TMW_Quest <= 10)  goto L_Vincent;
+    if (TMW_Quest <= 12)  goto L_Sandra;
+    if (TMW_Quest <= 40)  goto L_Desert;
+    goto L_Bandit;
+
+L_Bandit:
+// move Bandit subquest into Nibble 0 of QUEST_Hurnscald
+    set @bandit, TMW_Quest - 40;
+    set QUEST_Hurnscald, (QUEST_Hurnscald & ~(NIBBLE_0_MASK) | (@bandit << NIBBLE_0_SHIFT));
+    set TMW_Quest, 40;
+    set @bandit, 0;
+    goto L_Desert;
+
+L_Desert:
+// move guard and miner subquest into Byte 2 (Nibble 4 and 5) of QUEST_SouthTulimshar
+    set @miners, TMW_Quest - 12;
+    set QUEST_SouthTulimshar, (QUEST_SouthTulimshar & ~(BYTE_2_MASK) | (@miners << BYTE_2_SHIFT));
+    set TMW_Quest, 12;
+    set @miners, 0;
+    goto L_Sandra;
+
+L_Sandra:
+// move Sandra subquest into Nibble 3 of QUEST_SouthTulimshar
+    set @sandra, TMW_Quest - 10;
+    set QUEST_SouthTulimshar, (QUEST_SouthTulimshar & ~(NIBBLE_3_MASK) | (@sandra << NIBBLE_3_SHIFT));
+    set TMW_Quest, 10;
+    set @sandra, 0;
+    goto L_Vincent;
+
+L_Vincent:
+// move Vincent subquest into Nibble 2 of QUEST_SouthTulimshar
+    set @vincent, TMW_Quest - 8;
+    set QUEST_SouthTulimshar, (QUEST_SouthTulimshar & ~(NIBBLE_2_MASK) | (@vincent << NIBBLE_2_SHIFT));
+    set TMW_Quest, 8;
+    set @vincent, 0;
+    goto L_Sarah;
+
+L_Sarah:
+// move Sarah subquest into Nibble 1 of QUEST_SouthTulimshar
+    set @sarah, TMW_Quest - 6;
+    set QUEST_SouthTulimshar, (QUEST_SouthTulimshar & ~(NIBBLE_1_MASK) | (@sarah << NIBBLE_1_SHIFT));
+    set TMW_Quest, 6;
+    set @sarah, 0;
+    goto L_Bernard_Mikhail;
+
+L_Bernard_Mikhail:
+// move Bernard and Mikhail subquest into Nibble 0 of QUEST_SouthTulimshar
+    set QUEST_SouthTulimshar, (QUEST_SouthTulimshar & ~(NIBBLE_0_MASK) | (TMW_Quest << NIBBLE_0_SHIFT));
+    set TMW_Quest, 0;
+    goto L_Done;
+
+L_Done:
+    return;
+}
+
+-|script|#ClearGlobalVars|-1,
+{
+    end;
+
+OnInit:
+
+// Clear some entries of the arrays which save the Fluffy Hunting highscore list
+    set $@loop, 5;
+    goto L_FluffyClear;
+
+L_FluffyClear:
+    if ($@loop == 12)
+        goto L_IlliaClear;
+
+    set $Record_Fluffy_Name$[$@loop], "";
+    set $Record_Fluffy_Date$[$@loop], "";
+    set $Record_Fluffy_Kills[$@loop], 0;
+
+    set $@loop, $@loop + 1;
+    goto L_FluffyClear;
+
+
+// Clear the array which saves the teams who beat the Illia quest
+L_IlliaClear:
+    set $@loop, 0;
+    goto L_IlliaLoop;
+
+L_IlliaLoop:
+    if ($Illia_Win_Records$[$@loop] == "")
+        goto L_EventClear;
+
+    set $Illia_Win_Records$[$@loop], "";
+
+    set $@loop, $@loop + 1;
+    goto L_IlliaLoop;
+
+L_EventClear:
+    set $@loop, 0;
+
+// Clear global variable used in the Halloween event 2009
+    set $CandyOpsComplete, 0;
+
+// Clear global variables used in the Easter event 2010
+    set $Easter_2010_Npc_State1, 0;
+    set $Easter_2010_Npc_State2, 0;
+    set $Easter_2010_Egg_Loc_State1, 0;
+    set $Easter_2010_Egg_Loc_State2, 0;
+    set $Easter_2010_Egg_Loc_State3, 0;
+    set $Easter_2010_Egg_Loc_State4, 0;
+    set $Easter_2010_Egg_Loc_State5, 0;
+
+// Clear global variables used in the Halloween event 2010
+    set $hween10, 0;
+    set $hween10_tondel, 0;
+    set $hween10_mmallow, 0;
+    set $hween10_jelskul, 0;
+    set $hween10_canpump, 0;
+
+// Clear global variable used in Christmas event 2010
+    set $Golbenez_Inn_Cost, 0;
+
+// Variable was used in Voltain's script, was renamed and turned into a temporary variable
+    set $state, 0;
+
+    end;
 }

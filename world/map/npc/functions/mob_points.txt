@@ -1,7 +1,8 @@
 // Mob points
 
-function|script|MobPoints|{
-    if (@mobID < 1002) return;
+function|script|MobPoints|,
+{
+    if (@mobID < 1002) goto L_Return;
 
     setarray @points,
         1, // Maggot
@@ -70,14 +71,13 @@ function|script|MobPoints|{
         20, // Bandit Lord
         30, // Vampire Bat
         20, // Reaper
-        100, // Reaper 2
         100, // Scythe
         20, // Ball Lightning
         60, // Ice Element
         80, // Yeti
         100, // The Lost
-        0, // Red Bone
-        0, // Stalker
+        60, // Red Bone
+        60, // Stalker
         0, // Dreadwing
         100, // Drunken Skeleton
         100, // Tipsy Skeleton
@@ -98,24 +98,68 @@ function|script|MobPoints|{
         20, // WhiteSlime,
         40, // Reinboo,
         0, // WhiteBell,
+        60, // SoulSnake
+        100, // SoulEater
+        25, // CopperSlime
+        0, // SleepingBandit
+        20, // AzulSlime
+        80, // DemonicSpirit
+        940, // Luvia
+        150, // WitchGuard
+        50, // DemonicMouboo
+        15, // ViciousSquirrel
+        20, // WickedMushroom
+        18, // Bluepar
+        10, // AngryFireGoblin
+        35, // AngrySeaSlime
+        50, // CandiedSlime
+        40, // Santaboo
+        30, // Pollett
+        100, //Nutcracker
+        40, // SeaSlimeMother
+        50, // UndeadWitch
+        60, // UndeadTroll
+        80, // GreenSlimeMother
+        100, // Thug
+        100, // Swashbuckler
+        100, // Grenadier
+        150, // DreadPirateMarley
+        10, // DreadPirateMarleyClone
+        100, // Wight
+        100, // ManaGhost
+        100, // PsiBrain
+        150, // GeneralKurkan
+        175, // GeneralRazha
+        200, // GeneralTerogan
         // Add more here
         0; // END
-
 
     if (MPQUEST == 1)
         set Mobpt, Mobpt + @points[@mobID - 1002];
 
-// Scorpion, Red Scorpion, Black Scorpion, Angry Scorpion
-    if ((@mobID == 1003)
-        || (@mobID == 1004)
-        || (@mobID == 1008)
-        ||  (@mobID == 1057))
-            goto L_good;
+    callfunc "ValonState";
+    if (((@valon_start) && (!(@valon_end))) && (@mobID == $@ValonMob[@valon_mob]))
+        goto L_ValonMobKill;
+    goto L_NatureKarma;
 
+L_ValonMobKill:
+    callfunc "AddValonCntMask";
+    goto L_NatureKarma;
+
+L_NatureKarma:
+// Scorpion, Red Scorpion, Black Scorpion, Angry Scorpion
+// DemonicMouboo, ViciousSquirrel, WickedMushroom, Bluepar
+    if ((@mobID == 1003) || (@mobID == 1004) || (@mobID == 1009) || (@mobID == 1057)
+        || (@mobID == 1104) || (@mobID == 1105) || (@mobID == 1106) || (@mobID == 1107))
+            goto L_good;
 
     // Attitude adjustment for the witch (can we refactor this to another function?  Not sure about max. recursion depth)
 
     set @value, 0;
+// Pinkie
+    if (@mobID == 1018)
+        set @value, 3;
+
 // Fluffy
     if (@mobID == 1020)
         set @value, 3;
@@ -131,6 +175,12 @@ function|script|MobPoints|{
 // Reinboo
     if (@mobID == 1094)
         set @value, 3;
+// Santaboo
+    if (@mobID == 1112)
+        set @value, 3;
+// Pollett
+    if (@mobID == 1113)
+        set @value, 3;
 
     if (@value == 0)
         goto L_end;
@@ -141,7 +191,12 @@ function|script|MobPoints|{
 L_good:
     set @value, 1;
     callfunc "QuestSagathaHappy";
+    goto L_end;
 
 L_end:
     set @value, 0;
+    end;
+
+L_Return:
+    return;
 }

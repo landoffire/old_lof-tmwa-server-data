@@ -5,7 +5,10 @@
 011-3-evil.gat,0,0,0,0|monster|Silkworm|1035,3,60000,30000,Mob011-3-evil::On1035
 
 
-011-3-evil.gat,0,0,0|script|Mob011-3-evil|-1,{
+011-3-evil.gat,0,0,0|script|Mob011-3-evil|-1,
+{
+    end;
+
 On1017:
     set @mobID, 1017;
     callfunc "MobPoints";
@@ -14,7 +17,5 @@ On1017:
 On1035:
     set @mobID, 1035;
     callfunc "MobPoints";
-    end;
-
     end;
 }

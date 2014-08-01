@@ -23,30 +23,42 @@
 // Variables used inside:
 // DailyQuestPoints - The number of points the player currently has
 // DailyQuestTime - Time since DailyQuestPoints was lasted renewed
-// DailyQuestBonus - Additional points added once in addition to player BaseLevel
+// DailyQuestBonus - Additional points added in addition to player BaseLevel
 
 // (DailyQuestBonus makes a good reward from non-daily quests)
 
-function|script|DailyQuest|{
+function|script|DailyQuestPoints|,
+{
     set @dq_earliest, gettimetick(2) - 86400;
-    if (DailyQuestTime < @dq_earliest) set DailyQuestTime, @dq_earliest;
+    if (DailyQuestTime < @dq_earliest)
+        set DailyQuestTime, @dq_earliest;
 
-    //how many whole daily quest points the player has earned
-    //we increment DailyQuestTime by the number of seconds in that many increments
+    // how many whole daily quest points the player has earned
+    // we increment DailyQuestTime by the number of seconds in that many increments
     set @dq_increments, (gettimetick(2) - DailyQuestTime)*BaseLevel / 86400;
-    set DailyQuestTime, DailyQuestTime+@dq_increments*86400/BaseLevel;
+    set DailyQuestTime, DailyQuestTime + @dq_increments*86400/BaseLevel;
 
-    //player can't regenerate any quest points, but might have a bonus
-    if (DailyQuestPoints >= BaseLevel) goto L_Bonus;
+    // player can't regenerate any quest points, but might have a bonus
+    if (DailyQuestPoints >= BaseLevel)
+        goto L_Bonus;
 
-    //normal recharging case - increment, but don't let it recharge more than a day's worth
+    // normal recharging case - increment, but don't let it recharge more than a day's worth
     set DailyQuestPoints, DailyQuestPoints + @dq_increments;
-    if (DailyQuestPoints > BaseLevel) set DailyQuestPoints, BaseLevel;
-    //fallthrough to bonus, which *is* allowed to push DailyQuestPoints above BaseLevel
+    if (DailyQuestPoints > BaseLevel)
+        set DailyQuestPoints, BaseLevel;
+    // fallthrough to bonus, which *is* allowed to push DailyQuestPoints above BaseLevel
+    goto L_Bonus;
 
 L_Bonus:
-    if (DailyQuestBonus != 0) set DailyQuestPoints, DailyQuestPoints + DailyQuestBonus;
+    set DailyQuestPoints, DailyQuestPoints + DailyQuestBonus;
     set DailyQuestBonus, 0;
+
+    return;
+}
+
+function|script|DailyQuest|,
+{
+    callfunc "DailyQuestPoints";
 
     if (BaseLevel < @dq_level)
         goto L_Low_Level;
@@ -54,10 +66,12 @@ L_Bonus:
         goto L_Not_Enough_Points;
 
     mes "\"If you bring me " + @dq_count + " " + @dq_friendly_name$ + ", I will give you a reward.\"";
-    menu "I have what you want.", L_Trade,
-         "Ok, I'll get to work.", -,
-         "Nah, I'm not going to help you.", -;
+    menu
+        "I have what you want.", L_Trade,
+        "Ok, I'll get to work.", L_Next,
+        "Nah, I'm not going to help you.", L_Next;
 
+L_Next:
     set @dq_return, 1;
     goto L_Exit;
 
@@ -79,6 +93,7 @@ L_Trade:
     mes "";
     mes "[" + @dq_money + " money]";
     mes "[" + @dq_exp + " experience points]";
+    goto L_Exit_Good;
 
 L_Exit_Good:
     set @dq_return, 4;
@@ -107,7 +122,7 @@ L_Exit:
 
 S_SayPhrase:
     if (@dq_handle_return)
-        return;
+        goto L_Return;
     if (DailyQuestPoints < @dq_cost)
         goto L_Exhausted;
     if (DailyQuestPoints > BaseLevel)
@@ -137,5 +152,8 @@ L_Low:
     return;
 L_Exhausted:
     mes "\"You look exhausted, maybe you should rest a bit.\"";
+    return;
+
+L_Return:
     return;
 }

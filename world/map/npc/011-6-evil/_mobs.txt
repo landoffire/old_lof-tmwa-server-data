@@ -17,40 +17,43 @@
 011-6-evil.gat,257,77,4,126|monster|Bat|1017,6,30000,100000,Mob011-6-evil::On1017
 011-6-evil.gat,192,77,4,126|monster|Bat|1017,9,30000,100000,Mob011-6-evil::On1017
 011-6-evil.gat,167,110,87,13|monster|Bat|1017,9,30000,100000,Mob011-6-evil::On1017
-011-6-evil.gat,75,70,104,96|monster|Vampire Bat|1066,23,30000,100000,Mob011-6-evil::On1066
-011-6-evil.gat,78,195,129,97|monster|Vampire Bat|1066,9,30000,100000,Mob011-6-evil::On1066
-011-6-evil.gat,168,109,36,37|monster|Spiky Mushroom|1019,5,30000,100000,Mob011-6-evil::On1019
-011-6-evil.gat,199,76,36,37|monster|Spiky Mushroom|1019,5,30000,100000,Mob011-6-evil::On1019
-011-6-evil.gat,88,163,29,27|monster|Spiky Mushroom|1019,5,30000,100000,Mob011-6-evil::On1019
-011-6-evil.gat,48,113,35,19|monster|Spiky Mushroom|1019,5,30000,100000,Mob011-6-evil::On1019
-011-6-evil.gat,177,94,20,28|monster|Evil Mushroom|1013,4,30000,100000,Mob011-6-evil::On1013
-011-6-evil.gat,194,49,20,28|monster|Evil Mushroom|1013,2,30000,100000,Mob011-6-evil::On1013
-011-6-evil.gat,51,115,47,24|monster|Evil Mushroom|1013,2,30000,100000,Mob011-6-evil::On1013
-011-6-evil.gat,63,169,13,17|monster|Evil Mushroom|1013,2,30000,100000,Mob011-6-evil::On1013
-011-6-evil.gat,100,226,29,14|monster|Snow Flake|1097,3,30000,100000,Mob011-6-evil::On1097
-011-6-evil.gat,260,44,53,16|monster|Spiky Mushroom|1019,3,30000,100000,Mob011-6-evil::On1019
-011-6-evil.gat,272,48,21,28|monster|Evil Mushroom|1013,2,30000,100000,Mob011-6-evil::On1013
-011-6-evil.gat,95,78,31,25|monster|Snow Flake|1097,5,30000,100000,Mob011-6-evil::On1097
-011-6-evil.gat,59,36,19,25|monster|Yellow Slime|1007,5,30000,100000,Mob011-6-evil::On1007
-011-6-evil.gat,26,69,19,25|monster|Yellow Slime|1007,5,30000,100000,Mob011-6-evil::On1007
-011-6-evil.gat,61,101,14,10|monster|Yellow Slime|1007,3,30000,100000,Mob011-6-evil::On1007
-011-6-evil.gat,50,61,9,12|monster|Yellow Slime|1007,3,30000,100000,Mob011-6-evil::On1007
-011-6-evil.gat,128,39,9,12|monster|Yellow Slime|1007,3,30000,100000,Mob011-6-evil::On1007
-011-6-evil.gat,41,178,9,12|monster|Lava Slime|1096,1,30000,100000,Mob011-6-evil::On1096
-011-6-evil.gat,70,229,9,12|monster|Lava Slime|1096,1,30000,100000,Mob011-6-evil::On1096
-011-6-evil.gat,20,204,9,12|monster|Yellow Slime|1007,1,30000,100000,Mob011-6-evil::On1007
-011-6-evil.gat,114,190,9,12|monster|Yellow Slime|1007,4,30000,100000,Mob011-6-evil::On1007
-011-6-evil.gat,137,205,9,12|monster|Yellow Slime|1007,2,30000,100000,Mob011-6-evil::On1007
-011-6-evil.gat,79,220,29,14|monster|Cave Snake|1021,3,30000,100000,Mob011-6-evil::On1021
-011-6-evil.gat,115,210,29,14|monster|Cave Snake|1021,3,30000,100000,Mob011-6-evil::On1021
-011-6-evil.gat,41,193,31,31|monster|Black Slime|1100,3,30000,100000,Mob011-6-evil::On1100
-011-6-evil.gat,70,143,31,31|monster|Cave Snake|1021,3,30000,100000,Mob011-6-evil::On1021
-011-6-evil.gat,97,183,29,14|monster|Black Slime|1100,3,30000,100000,Mob011-6-evil::On1100
-011-6-evil.gat,172,252,9,12|monster|Cave Maggot|1056,4,30000,100000,Mob011-6-evil::On1056
-011-6-evil.gat,263,236,16,5|monster|Lava Slime|1096,15,30000,500,Mob011-6-evil::On1096
+011-6-evil.gat,75,70,104,96|monster|Bat|1017,23,30000,100000,Mob011-6-evil::On1017
+011-6-evil.gat,78,195,129,97|monster|Bat|1017,9,30000,100000,Mob011-6-evil::On1017
+011-6-evil.gat,168,109,36,37|monster|SpikyMushroom|1019,5,30000,100000,Mob011-6-evil::On1019
+011-6-evil.gat,199,76,36,37|monster|SpikyMushroom|1019,5,30000,100000,Mob011-6-evil::On1019
+011-6-evil.gat,88,163,29,27|monster|SpikyMushroom|1019,5,30000,100000,Mob011-6-evil::On1019
+011-6-evil.gat,48,113,35,19|monster|SpikyMushroom|1019,5,30000,100000,Mob011-6-evil::On1019
+011-6-evil.gat,177,94,20,28|monster|EvilMushroom|1013,4,30000,100000,Mob011-6-evil::On1013
+011-6-evil.gat,194,49,20,28|monster|EvilMushroom|1013,2,30000,100000,Mob011-6-evil::On1013
+011-6-evil.gat,51,115,47,24|monster|EvilMushroom|1013,2,30000,100000,Mob011-6-evil::On1013
+011-6-evil.gat,63,169,13,17|monster|EvilMushroom|1013,2,30000,100000,Mob011-6-evil::On1013
+011-6-evil.gat,100,226,29,14|monster|SpikyMushroom|1019,3,30000,100000,Mob011-6-evil::On1019
+011-6-evil.gat,260,44,53,16|monster|SpikyMushroom|1019,3,30000,100000,Mob011-6-evil::On1019
+011-6-evil.gat,272,48,21,28|monster|EvilMushroom|1013,2,30000,100000,Mob011-6-evil::On1013
+011-6-evil.gat,95,78,31,25|monster|YellowSlime|1007,5,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,59,36,19,25|monster|YellowSlime|1007,5,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,26,69,19,25|monster|YellowSlime|1007,5,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,61,101,14,10|monster|YellowSlime|1007,3,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,50,61,9,12|monster|YellowSlime|1007,3,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,128,39,9,12|monster|YellowSlime|1007,3,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,41,178,9,12|monster|YellowSlime|1007,1,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,70,229,9,12|monster|YellowSlime|1007,1,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,20,204,9,12|monster|YellowSlime|1007,1,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,114,190,9,12|monster|YellowSlime|1007,4,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,137,205,9,12|monster|YellowSlime|1007,2,30000,100000,Mob011-6-evil::On1007
+011-6-evil.gat,79,220,29,14|monster|CaveSnake|1021,3,30000,100000,Mob011-6-evil::On1021
+011-6-evil.gat,115,210,29,14|monster|CaveSnake|1021,3,30000,100000,Mob011-6-evil::On1021
+011-6-evil.gat,41,193,31,31|monster|CaveSnake|1021,3,30000,100000,Mob011-6-evil::On1021
+011-6-evil.gat,70,143,31,31|monster|CaveSnake|1021,3,30000,100000,Mob011-6-evil::On1021
+011-6-evil.gat,97,183,29,14|monster|CaveSnake|1021,3,30000,100000,Mob011-6-evil::On1021
+011-6-evil.gat,172,252,9,12|monster|CaveMaggot|1056,4,30000,100000,Mob011-6-evil::On1056
+011-6-evil.gat,263,236,16,5|monster|CaveMaggot|1056,3,30000,100000,Mob011-6-evil::On1056
 
 
-011-6-evil.gat,0,0,0|script|Mob011-6-evil|-1,{
+011-6-evil.gat,0,0,0|script|Mob011-6-evil|-1,
+{
+    end;
+
 On1007:
     set @mobID, 1007;
     callfunc "MobPoints";
@@ -89,27 +92,5 @@ On1056:
 On1064:
     set @mobID, 1064;
     callfunc "MobPoints";
-    end;
-
-On1066:
-    set @mobID, 1066;
-    callfunc "MobPoints";
-    end;
-
-On1096:
-    set @mobID, 1096;
-    callfunc "MobPoints";
-    end;
-
-On1097:
-    set @mobID, 1097;
-    callfunc "MobPoints";
-    end;
-
-On1100:
-    set @mobID, 1100;
-    callfunc "MobPoints";
-    end;
-
     end;
 }

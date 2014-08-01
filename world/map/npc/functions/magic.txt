@@ -10,17 +10,17 @@
 // ------------------------------------------------------------
 // Gain initial magic skill
 // ------------------------------------------------------------
-function|script|MagicGainBasic|{
-
+function|script|MagicGainBasic|,
+{
     set MAGIC_FLAGS, MAGIC_FLAGS | MFLAG_DRANK_POTION;
     close;
-
 }
 
 // ------------------------------------------------------------
 // Initialise Menu for selecting a choice of things to ask about
 // ------------------------------------------------------------
-function|script|MagicTalkOptionsSetup|{
+function|script|MagicTalkOptionsSetup|,
+{
     set @QQ_ELANORE, 1;
     set @QQ_MANASEED, 2;
     set @QQ_MANAPOTION, 4;
@@ -39,8 +39,8 @@ function|script|MagicTalkOptionsSetup|{
 // Returns the result in @c, or returns 0 if there is no result
 // ------------------------------------------------------------
 
-
-function|script|MagicTalkMenu|{
+function|script|MagicTalkMenu|,
+{
     setarray @choice$, "", "", "", "", "", "", "", "", "", "";
     set @choices_nr, 0;
     setarray @choice_idx, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
@@ -50,6 +50,7 @@ function|script|MagicTalkMenu|{
     set @choice$[@choices_nr], "...Elanore the Healer?";
     set @choice_idx[@choices_nr], @QQ_ELANORE;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_elanore;
 
 L_Q_post_elanore:
     if (@ignore == @QQ_MANASEED)
@@ -59,6 +60,7 @@ L_Q_post_elanore:
     set @choice$[@choices_nr], "...the Mana Seed?";
     set @choice_idx[@choices_nr], @QQ_MANASEED;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_manaseed;
 
 L_Q_post_manaseed:
     if (@ignore & @QQ_MANAPOTION)
@@ -68,6 +70,7 @@ L_Q_post_manaseed:
     set @choice$[@choices_nr], "...Mana Potions?";
     set @choice_idx[@choices_nr], @QQ_MANAPOTION;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_manapotion;
 
 L_Q_post_manapotion:
     if (@ignore & @QQ_WYARA)
@@ -77,6 +80,7 @@ L_Q_post_manapotion:
     set @choice$[@choices_nr], "...Wyara the Witch?";
     set @choice_idx[@choices_nr], @QQ_WYARA;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_wyara;
 
 L_Q_post_wyara:
     if (@ignore & @QQ_SAGATHA)
@@ -86,6 +90,7 @@ L_Q_post_wyara:
     set @choice$[@choices_nr], "...Sagatha the Witch?";
     set @choice_idx[@choices_nr], @QQ_SAGATHA;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_sagatha;
 
 L_Q_post_sagatha:
     if (@ignore & @QQ_AULDSBEL)
@@ -95,6 +100,7 @@ L_Q_post_sagatha:
     set @choice$[@choices_nr], "...Auldsbel the Wizard?";
     set @choice_idx[@choices_nr], @QQ_AULDSBEL;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_auldsbel;
 
 L_Q_post_auldsbel:
     if (@ignore & @QQ_OLDWIZ)
@@ -104,6 +110,7 @@ L_Q_post_auldsbel:
     set @choice$[@choices_nr], "...the Old Wizard?";
     set @choice_idx[@choices_nr], @QQ_OLDWIZ;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_oldwiz;
 
 L_Q_post_oldwiz:
     if (@ignore & @QQ_IMP)
@@ -113,6 +120,7 @@ L_Q_post_oldwiz:
     set @choice$[@choices_nr], "...the Earth Spirit in the desert well?";
     set @choice_idx[@choices_nr], @QQ_IMP;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_imp;
 
 L_Q_post_imp:
     if (@ignore & @QQ_ASTRALSOUL)
@@ -124,6 +132,7 @@ L_Q_post_imp:
     set @choice$[@choices_nr], "...ways to improve my magic?";
     set @choice_idx[@choices_nr], @QQ_ASTRALSOUL;
     set @choices_nr, @choices_nr + 1;
+    goto L_Q_post_astralsoul;
 
 L_Q_post_astralsoul:
     set @choice$[@choices_nr], "...never mind.";
@@ -131,17 +140,18 @@ L_Q_post_astralsoul:
     set @choices_nr, @choices_nr + 1;
 
     menu
-        @choice$[0], -,
-        @choice$[1], -,
-        @choice$[2], -,
-        @choice$[3], -,
-        @choice$[4], -,
-        @choice$[5], -,
-        @choice$[6], -,
-        @choice$[7], -,
-        @choice$[8], -,
-        @choice$[9], -;
+        @choice$[0], L_MenuItems,
+        @choice$[1], L_MenuItems,
+        @choice$[2], L_MenuItems,
+        @choice$[3], L_MenuItems,
+        @choice$[4], L_MenuItems,
+        @choice$[5], L_MenuItems,
+        @choice$[6], L_MenuItems,
+        @choice$[7], L_MenuItems,
+        @choice$[8], L_MenuItems,
+        @choice$[9], L_MenuItems;
 
+L_MenuItems:
     set @menu, @menu - 1;
 
     if (@menu >= @choices_nr)
@@ -159,7 +169,8 @@ L_Q_post_astralsoul:
 // @SUP_name$		name of the skill to level up
 // @SUP_xp		# of experience points to award if the level up succeeds
 // ------------------------------------------------------------
-function|script|SkillUp|{
+function|script|SkillUp|,
+{
     if (getskilllv(@SUP_id) >= @SUP_lvl)
         goto L_shortcut;
 

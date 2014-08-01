@@ -12,7 +12,7 @@
 011-6-evil.gat,98,30|warp|To Small Bandit Cave|-1,-1,011-6-evil.gat,271,51
 011-6-evil.gat,47,120|warp|To Second Bandit Cave|-1,-1,011-6-evil.gat,146,117
 011-6-evil.gat,49,101|warp|To Woodland|-1,-1,011-1-evil.gat,38,37
-011-6-evil.gat,24,206|warp|To Lake Cave|-1,-1,011-4-evil.gat,16,58
+011-6-evil.gat,24,206|warp|To Lake Cave|-1,-1,011-4.gat,16,58
 011-6-evil.gat,47,185|warp|To Lake Cave|-1,-1,011-4-evil.gat,39,36
 011-6-evil.gat,97,169|warp|To Lake Cave|-1,-1,011-4-evil.gat,89,21
 011-6-evil.gat,113,182|warp|To Lake Cave|-1,-1,011-4-evil.gat,106,33
@@ -22,5 +22,5 @@
 011-6-evil.gat,251,278|warp|To Lake Cave|-1,-1,011-4-evil.gat,111,122
 011-6-evil.gat,186,182|warp|To Lake Cave|0,-1,011-4-evil.gat,32,6
 011-6-evil.gat,266,182|warp|To Lake Cave|-1,-1,011-4-evil.gat,45,119
-011-6-evil.gat,174,256|warp|To Bandit Lord Cave|-1,-1,011-6-evil.gat,264,237
+011-6-evil.gat,174,256|warp|To Bandit Lord Cave|-1,-1,011-6.gat,264,237
 011-6-evil.gat,264,236|warp|To Isolated Storage Room|-1,-1,011-6-evil.gat,174,255

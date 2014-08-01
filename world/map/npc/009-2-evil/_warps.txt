@@ -18,8 +18,8 @@
 009-2-evil.gat,155,62|warp|To Second Floor|0,-1,009-2-evil.gat,155,46
 009-2-evil.gat,182,67|warp|To Outside|0,-1,009-1-evil.gat,91,47
 009-2-evil.gat,147,90|warp|To Hurnscald Cave|-1,-1,009-3-evil.gat,173,21
-009-2-evil.gat,27,107|warp|To Evil Outside|-1,-1,009-1-evil.gat,58,47
-009-2-evil.gat,46,50|warp|To Inn Private Room|-1,-1,009-2-evil.gat,76,78
+009-2-evil.gat,27,107|warp|To Outside|-1,-1,009-1-evil.gat,58,47
+009-2-evil.gat,46,50|warp|To Inn Private Room|-1,-1,009-2.gat,76,78
 009-2-evil.gat,77,78|warp|To Hurnscald Inn|-1,-1,009-2-evil.gat,47,50
 009-2-evil.gat,46,50|warp|To Inn Private Room|-1,-1,009-2-evil.gat,76,78
 009-2-evil.gat,144,42|warp|To Third Floor|0,-1,009-2-evil.gat,144,25

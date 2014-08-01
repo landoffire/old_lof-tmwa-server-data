@@ -1,17 +1,31 @@
-function|script|SoulMenhir|{
+function|script|SoulMenhir|,
+{
     mes "[Soul Menhir]";
     mes "(A mystical aura surrounds this stone. You feel mysteriously attracted to it. Something tells you to touch it. What do you do?)";
     next;
 
     menu
-        "Touch it", -,
-        "Leave it alone", L_Return;
+        "Touch it.", L_Bind,
+        "Leave it alone.", L_Return,
+        "I lost my towel...", L_Towel;
 
+L_Towel:
+    if (TowelLastUsed > (gettimetick(2) - 1800))
+        goto L_DontPanic;
+    callfunc "MultiWarpTowel";
+    set TowelLastUsed, gettimetick(2);
+    mes "[Soul Menhir]";
+    mes "(You touch the mysterious stone. Somehow it feels hard and soft at the same time.)";
+    next;
+    getitem "HitchhikersTowel", 1;
+    goto L_Return;
+
+L_Bind:
     if (Menhir_Activated == 1)
         goto L_Shortversion;
 
     mes "[Soul Menhir]";
-    mes "(You touch the mysteriouse stone. Somehow it feels warm and cold at the same time.)";
+    mes "(You touch the mysterious stone. Somehow it feels warm and cold at the same time.)";
     next;
 
     mes "[Soul Menhir]";
@@ -27,12 +41,18 @@ function|script|SoulMenhir|{
 
 L_Shortversion:
     mes "[Soul Menhir]";
-    mes "(A strange sensation flows through you. It feels like your soul leaves your body and becomes one with the stone. as suddenly as the feeling started it stops.)";
+    mes "(A strange sensation flows through you. It feels like your soul leaves your body and becomes one with the stone. As suddenly as the feeling started it stops.)";
     next;
+    goto L_Save;
 
 L_Save:
     if (@x == 0 && @y == 0)
         goto L_FindPoint;
+    goto L_Do_Save;
+
+L_DontPanic:
+    message strcharinfo(0), "(A strange barrier keeps you from touching the stone at this time.)";
+    goto L_Return;
 
 L_Do_Save:
     savepoint @map$, @x, @y;

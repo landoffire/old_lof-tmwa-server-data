@@ -5,16 +5,19 @@
 041-1.gat,76,67,18,9|monster|Scorpion|1003,3,100000,30000,Mob041-1::On1003
 041-1.gat,75,84,18,9|monster|Scorpion|1003,3,100000,30000,Mob041-1::On1003
 041-1.gat,36,34,13,20|monster|Scorpion|1003,3,100000,30000,Mob041-1::On1003
-041-1.gat,30,30,10,48|monster|Sea Slime|1033,3,100000,30000,Mob041-1::On1033
+041-1.gat,30,30,10,48|monster|SeaSlime|1033,3,100000,30000,Mob041-1::On1033
 041-1.gat,34,13,10,9|monster|Scorpion|1003,3,100000,30000,Mob041-1::On1003
-041-1.gat,35,7,3,2|monster|Black Scorpion|1009,1,100000,30000,Mob041-1::On1009
-041-1.gat,41,49,3,2|monster|Black Scorpion|1009,1,100000,30000,Mob041-1::On1009
-041-1.gat,70,75,21,9|monster|Black Scorpion|1009,1,100000,30000,Mob041-1::On1009
-041-1.gat,75,57,18,9|monster|Red Scorpion|1004,3,100000,30000,Mob041-1::On1004
-041-1.gat,58,64,18,9|monster|Red Scorpion|1004,3,100000,30000,Mob041-1::On1004
+041-1.gat,35,7,3,2|monster|BlackScorpion|1009,1,100000,30000,Mob041-1::On1009
+041-1.gat,41,49,3,2|monster|BlackScorpion|1009,1,100000,30000,Mob041-1::On1009
+041-1.gat,70,75,21,9|monster|BlackScorpion|1009,1,100000,30000,Mob041-1::On1009
+041-1.gat,75,57,18,9|monster|RedScorpion|1004,3,100000,30000,Mob041-1::On1004
+041-1.gat,58,64,18,9|monster|RedScorpion|1004,3,100000,30000,Mob041-1::On1004
 
 
-041-1.gat,0,0,0|script|Mob041-1|-1,{
+041-1.gat,0,0,0|script|Mob041-1|-1,
+{
+    end;
+
 On1003:
     set @mobID, 1003;
     callfunc "MobPoints";
@@ -33,7 +36,5 @@ On1009:
 On1033:
     set @mobID, 1033;
     callfunc "MobPoints";
-    end;
-
     end;
 }

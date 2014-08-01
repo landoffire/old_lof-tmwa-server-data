@@ -3,6 +3,7 @@
 map: 009-1.gat
 npc: npc/009-1/_mobs.txt
 npc: npc/009-1/_warps.txt
+npc: npc/009-1/hurns_constable.txt
 npc: npc/009-1/jack.txt
 npc: npc/009-1/mapflags.txt
 npc: npc/009-1/milly.txt
@@ -14,4 +15,3 @@ npc: npc/009-1/snippy.txt
 npc: npc/009-1/soul-menhir.txt
 npc: npc/009-1/teleporter.txt
 npc: npc/009-1/water_pump.txt
-npc: npc/009-1/hurns_constable.txt
