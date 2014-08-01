@@ -20,8 +20,7 @@ L_Main:
         "Sing me a song, lute man!", L_Song,
         "Have you heard any news?", L_News,
         "What do you know about...", L_Question,
-        "Farewell!", -;
-    goto L_Close;
+        "Farewell!", L_Close;
 
 L_News:
 //     mes "[" + @name$ + "]";

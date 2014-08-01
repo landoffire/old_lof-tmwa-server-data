@@ -1,6 +1,7 @@
 // NPC to provide hints on progression of linear quest chain in Tulimshar
 
-001-1.gat,49,31,0|script|Gladys|154,{
+001-1.gat,49,31,0|script|Gladys|154,
+{
     mes "[Gladys, Town Gossip]";
     mes "\"Hello deary!  I hear some of the most fascinating rumors and bits of news. I just heard a bit more today!\"";
     mes "\"Would you like me to let you in on the good stuff?\"";
@@ -16,6 +17,7 @@ L_Yes:
     if (TMW_Quest >=6) goto L_Sarah;
     if (TMW_Quest >=4) goto L_Mik;
     if (TMW_Quest <1) goto L_Intro;
+    goto L_No;
 
 L_No:
     mes "[Gladys, Town Gossip]";

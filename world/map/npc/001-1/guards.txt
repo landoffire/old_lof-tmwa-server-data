@@ -1,6 +1,7 @@
 //
 
-001-1.gat,48,79,0|script|Ekinu|104,{
+001-1.gat,48,79,0|script|Ekinu|104,
+{
     mes "[Ekinu the Town Guard]";
     mes "\"What a disaster... I can't believe that we managed to rebuild the town so fast, though.\"";
     next;
@@ -17,6 +18,7 @@ L_Tip:
     if(@TEMP == 4) goto L_4;
     if(@TEMP == 5) goto L_5;
     if(@TEMP == 6) goto L_6;
+    goto L_1;
 
 L_1:
     mes "[Ekinu the Town Guard]";
@@ -74,7 +76,8 @@ L_Close:
     close;
 }
 
-001-1.gat,40,79,0|script|Ryan|104,{
+001-1.gat,40,79,0|script|Ryan|104,
+{
 
     if (getskilllv(SKILL_MAGIC)) goto L_message;
 

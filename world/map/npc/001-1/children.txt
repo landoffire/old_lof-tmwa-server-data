@@ -1,6 +1,7 @@
 // Aisha and Nina
 
-001-1.gat,95,29,0|script|Aisha|108,{
+001-1.gat,95,29,0|script|Aisha|108,
+{
     set @TEMP,rand(9);
     if(@TEMP == 0) goto L_1;
     if(@TEMP == 1) goto L_1;
@@ -11,6 +12,7 @@
     if(@TEMP == 6) goto L_6;
     if(@TEMP == 7) goto L_7;
     if(@TEMP == 8) goto L_8;
+    goto L_1;
 
 L_1:
     mes "[Aisha]";
@@ -57,7 +59,8 @@ L_Close:
     close;
 }
 
-001-1.gat,39,67,0|script|Nina|103,{
+001-1.gat,39,67,0|script|Nina|103,
+{
     mes "[Nina]";
     set @TEMP,rand(10);
     if(@TEMP == 0) goto L_1;
@@ -108,8 +111,7 @@ L_9:
     next;
     menu
         "A bad word?", L_tell,
-        "Oh, you better keep it for yourself then.", -;
-    goto L_Close;
+        "Oh, you better keep it for yourself then.", L_Close;
 
 L_tell:
     mes "[Nina]";
@@ -118,8 +120,7 @@ L_tell:
     menu
         "If I promise to never tell anyone, can you tell me the word?", L_keepword,
         "I understand, you do not need to tell me...", L_giveword,
-        "Goodbye!", -;
-    goto L_Close;
+        "Goodbye!", L_Close;
 
 L_keepword:
     mes "[Nina]";

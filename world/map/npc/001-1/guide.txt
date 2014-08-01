@@ -1,15 +1,22 @@
 //
 
-001-1.gat,32,27,0|script|Ian|102,{
+001-1.gat,32,27,0|script|Ian|102,
+{
     // This line is only relevant for players, who started before the timestamp was introduced.
     // Set the graduation cap flag at the right position.
     // It is a bugfix
-    if ((TUT_var < 4) && (TUT_var & 2)) set FLAGS, FLAGS|FLAG_GOT_GRADUATIONCAP;
+    if ((TUT_var < 4) && (TUT_var & 2))
+        set FLAGS, FLAGS|FLAG_GOT_GRADUATIONCAP;
 
-    if ((TUT_var != 0) && !(FLAGS & FLAG_GOT_GRADUATIONCAP) && BaseLevel >= 10) callsub S_Grad;
+    if ((TUT_var != 0) && !(FLAGS & FLAG_GOT_GRADUATIONCAP) && BaseLevel >= 10)
+        goto L_Grad;
+    goto L_DoneGrad;
+
+L_DoneGrad:
     mes "[Ian the Guide]";
     mes "\"Would you like to know about something?\"";
     next;
+    goto L_Menu_A;
 
 L_Menu_A:
     menu
@@ -25,7 +32,6 @@ L_Menu_A:
         "Quick Keys", L_Key,
         "Laws", L_Laws,
         "I know everything!", L_Know;
-    close;
 
 L_Fight:
     mes "[Ian the Guide]";
@@ -119,7 +125,7 @@ L_Stats:
     mes "\"People vary greatly by how much strength, agility, dexterity, intelligence, vitality, and luck they have.\"";
     next;
     mes "[Ian the Guide]";
-    mes "\"Strength helps you carry items, and it also allows you to hit harder-- but it is not too helpful if you focus on missile weapons.";
+    mes "\"Strength helps you carry items, and it also allows you to hit harder – but it is not too helpful if you focus on missile weapons.";
     mes "More agility allows you to attack faster, and to dodge attacks more easily.";
     mes "Your dexterity determines how likely you are to hit a monster, and how effective you are with missile weapons.\"";
     next;
@@ -136,7 +142,7 @@ L_Stats:
 
 L_Magic:
     mes "[Ian the Guide]";
-    mes "\"In decades past, there was a Mana Seed south of Tulimshar, from which people could draw magical energies.  Unfortunately, the seed is gone.";
+    mes "\"In decades past, there was a Mana Seed south of Tulimshar, from which people could draw magical energies. Unfortunately, the seed is gone.";
     mes "However, I've overheard the bard mentioning something about this recently... if you are interested in magic, try talking to him!\"";
     next;
     goto L_Menu_A;
@@ -160,19 +166,19 @@ L_Know:
     mes "\"But remember, the game isn't fun when you already know what to do. Use it well or you will lose interest in playing The Mana World! Please help by reporting anything that is unclear, outdated or that needs to be seen on our forums at http://forums.themanaworld.org.\"";
     close;
 
-S_Grad:
+L_Grad:
     getinventorylist;
     if (@inventorylist_count == 100) goto L_TooMany;
     mes "[Ian the Guide]";
     mes "\"Hey, you've been doing good, let me give you this.\"";
-    getitem "Knightshelmet", 1;
+    getitem "GraduationCap", 1;
     set FLAGS, FLAGS | FLAG_GOT_GRADUATIONCAP;
     next;
-    return;
+    goto L_DoneGrad;
 
 L_TooMany:
     mes "[Ian the Guide]";
     mes "\"I wanted to give you something, but you don't have room for it.\"";
     next;
-    return;
+    goto L_DoneGrad;
 }

@@ -1,6 +1,7 @@
 //
 
-001-1.gat,37,44,0|script|Bernard|117,{
+001-1.gat,37,44,0|script|Bernard|117,
+{
     if(TMW_Quest >= 4) goto L_Done2;
     if(TMW_Quest == 3) goto L_Progress2;
     if(TMW_Quest == 2) goto L_Done1;
@@ -9,6 +10,7 @@
     set @TEMP, rand(2);
     if(@TEMP == 0) goto L_Opening0;
     if(@TEMP == 1) goto L_Opening1;
+    goto L_Opening0;
 
 L_Opening0:
     mes "[Bernard]";
@@ -31,6 +33,7 @@ L_Yes:
     set @TEMP, rand(2);
     if(@TEMP == 0) goto L_Req0;
     if(@TEMP == 1) goto L_Req1;
+    goto L_Req0;
 
 L_Req0:
     mes "[Bernard]";
